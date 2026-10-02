@@ -36,7 +36,7 @@ Build a website with **exactly five pages** that explains a business problem, de
 
 - Give clear, repeatable steps another person can follow to use the solution.
 - Describe expected impact using evidence or **clearly labeled estimates**.
-- Identify limitations, assumptions, and a realistic next improvement.
+- Identify limitations, assumptions, and a realistic next improvement. 
 
 ## Requirements Across the Website
 
