@@ -1,1 +1,262 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The problem | Everyday Access</title><meta name="description" content="Group 4 debit-card fraud protection prototype: protect your account and preserve payment access."><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102640'/%3E%3Cpath d='M8 16l5 5 11-12' fill='none' stroke='%2371e4c2' stroke-width='4'/%3E%3C/svg%3E"><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="index.html">Everyday Access<span style="color:#71e4c2">.</span></a><nav aria-label="Main navigation"><a href="index.html" aria-current="page">Home</a><a href="solution.html" >Working solution</a><a href="marketing.html" >Marketing</a><a href="evidence.html" >Skills & testing</a><a href="guide.html" >Impact & guide</a></nav></header><main><div class="eyebrow">Protection without interruption</div><h1>A blocked card shouldn’t block your day.</h1><p class="lead">Real purchases get declined. Fraud can slip through. And a compromised debit card can leave customers waiting about five business days for a replacement.</p><a class="btn" href="solution.html">Try the protection demo</a><div class="grid"><section class="card"><span class="badge">Customers</span><h3>Time, uncertainty, lost access</h3><p>A checkout decline means an interrupted purchase and a call to the fraud line. A replacement-card wait disrupts everyday spending.</p></section><section class="card"><span class="badge">Fraud & operations teams</span><h3>Losses and avoidable calls</h3><p>Missed fraud creates losses. Incorrect decisions create service demand: the source deck reports 350K–400K fraud-related calls each month.</p></section><section class="card dark"><span class="badge">The proposal</span><h3>Check. Confirm. Protect. Restore.</h3><p>A bank-owned decision engine combines bank behavior and network signals, verifies unusual purchases in-app, and supports immediate digital-card recovery.</p></section></div><div class="two"><section><h2>Three decisions. One connected experience.</h2><p><b>Approve</b> routine purchases with less friction.<br><b>Verify</b> unusual activity with a clear “Was this you?” prompt.<br><b>Block and restore</b> when fraud is identified, with a digital credential for supported mobile wallets.</p><p>Option C is the team’s recommendation because it connects fraud decisions to customer recovery. The demonstration uses transparent rules to illustrate that workflow; it is not the proposed production AI model.</p></section><section class="card mint"><div class="metric">$250M</div><p>Annual fraud-loss baseline in the deck’s <b>planning case</b>, pending validation.</p><div class="metric">$73.1M</div><p>Target annual benefit from fraud reduction, fewer calls, and spend recovery. <b>Planning estimate—not a measured result.</b></p><a href="guide.html">See assumptions and impact</a></section></div><p class="small">Source: attached CEO Executive Upgrade, slides 1–7; Customer Slides, slides 1–6. The deck’s fraud-loss baseline is not independently verified bank data.</p></main><footer><b>Group 4 · BUSOBA 7256</b><nav aria-label="Footer navigation"><a href="index.html" aria-current="page">Home</a><a href="solution.html" >Working solution</a><a href="marketing.html" >Marketing</a><a href="evidence.html" >Skills & testing</a><a href="guide.html" >Impact & guide</a></nav>Rolando Aguirre · William Davis · Mary McCarroll · Emmanuel Oyedeji · Sidharth Tambe<br>Educational prototype. Synthetic transactions only. No bank connection or real card issuance.</footer><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Everyday Access is an illustrative debit-card protection experience that connects fraud decisions with continued digital access.">
+  <title>Everyday Access | Stop fraud. Keep your access.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2306162d'/%3E%3Cpath d='M8 16l5 5 11-12' fill='none' stroke='%2356d9e9' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="home.css">
+  <script src="components.js" defer></script>
+  <script src="home.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Everyday Access home">
+        <span class="brand__mark" aria-hidden="true">↗</span>
+        <span>Everyday Access</span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+        <span aria-hidden="true">☰</span> Menu
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Home page navigation">
+        <a href="#home" aria-current="page">Home</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#get-started">Get Started</a>
+      </nav>
+      <a class="btn site-header__cta" href="#get-started">Get Started <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div>
+          <p class="eyebrow">The protection is smart. The choice is yours.</p>
+          <h1 id="hero-title">Stop fraud.<br><span>Keep your access.</span></h1>
+          <p class="hero__lead">Smarter debit-card protection that verifies unusual purchases and immediately restores secure digital access, without waiting for your card in the mail.</p>
+          <div class="button-row">
+            <a class="btn" href="#get-started">Get Started <span aria-hidden="true">→</span></a>
+            <a class="btn btn--secondary" href="#how-it-works">See How It Works</a>
+          </div>
+          <p class="hero__tagline">Protection you can see and control.</p>
+        </div>
+        <figure class="hero-art" aria-label="Illustrative debit card and phone interface showing a purchase under review">
+          <div class="hero-art__halo" aria-hidden="true"></div>
+          <div class="debit-card" aria-hidden="true">
+            <div class="debit-card__top"><span>EVERYDAY<br>ACCESS</span><span class="debit-card__chip"></span></div>
+            <div class="debit-card__bottom"><span>DEBIT •••• 2048</span><span>EA</span></div>
+          </div>
+          <div class="phone" aria-hidden="true">
+            <div class="phone__screen">
+              <div class="phone__top"><span>Everyday Access</span><span>9:41</span></div>
+              <p class="phone__title">Purchase review</p>
+              <span class="badge badge--cyan">◇ Signals checked</span>
+              <div class="phone__purchase"><span>Northline Market</span><strong>$34.60</strong><span>Today · In store</span></div>
+              <div class="phone__signal">Low risk · 12/100</div>
+              <div class="phone__track"></div>
+              <div class="phone__status"><span class="badge badge--green">✓ Purchase approved</span></div>
+            </div>
+          </div>
+          <figcaption class="art-caption">Illustrative interface. No real purchase is processed.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="video" aria-labelledby="video-title">
+      <div class="container video-layout">
+        <div class="section-heading">
+          <p class="eyebrow">The everyday problem</p>
+          <h2 id="video-title">When protection interrupts the purchase</h2>
+          <p>A short story about the moment a blocked card stops a real customer—and how a clearer decision and faster recovery could help.</p>
+        </div>
+        <div>
+          <div class="video-frame" id="video-slot" aria-label="Video coming soon">
+            <div class="video-placeholder">
+              <span class="play-icon" aria-hidden="true">▶</span>
+              <strong>Video coming soon</strong>
+              <span>The problem story will appear here.</span>
+            </div>
+          </div>
+          <details class="transcript">
+            <summary>Read video summary or transcript</summary>
+            <p id="video-transcript">The video is in production. It will show an illustrative customer experiencing a blocked purchase, followed by the Everyday Access confirmation and recovery concept. A full transcript will be added with the finished video.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--light" id="how-it-works" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow eyebrow--dark">A connected response</p>
+          <h2 id="process-title">A blocked card can disrupt more than one purchase.</h2>
+          <p>Real purchases can be declined, fraud can be missed, and a compromised card can leave someone waiting days for a replacement. Everyday Access connects the decision with the next step.</p>
+        </div>
+        <div class="contrast-grid">
+          <article class="panel contrast-card">
+            <span class="badge badge--amber">! The problem</span>
+            <h3>Protection becomes a pause.</h3>
+            <p>An unclear decline interrupts checkout. If fraud is confirmed, waiting for a physical replacement can interrupt everyday spending too.</p>
+          </article>
+          <article class="panel contrast-card contrast-card--solution">
+            <span class="badge badge--cyan">◇ The solution</span>
+            <h3>One decision, then a clear path forward.</h3>
+            <p>An AI-powered decision engine checks each purchase, asks about unusual activity, blocks confirmed fraud, and offers secure digital access in a supported mobile wallet.</p>
+          </article>
+        </div>
+        <div class="framework" aria-label="Check, confirm, protect, restore">
+          <div class="framework__step"><span>01 / SIGNAL</span><h3>Check</h3><p>Review each purchase as it happens.</p></div>
+          <div class="framework__step"><span>02 / CUSTOMER</span><h3>Confirm</h3><p>Ask only when something looks unusual.</p></div>
+          <div class="framework__step"><span>03 / DECISION</span><h3>Protect</h3><p>Reject confirmed fraud before funds are drawn.</p></div>
+          <div class="framework__step"><span>04 / ACCESS</span><h3>Restore</h3><p>Offer a replacement digital card for a supported wallet.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section simulator" id="simulator" aria-labelledby="simulator-title">
+      <div class="container">
+        <div class="simulator__intro">
+          <div class="section-heading">
+            <p class="eyebrow">Moment of intelligence</p>
+            <h2 id="simulator-title">See how a purchase is protected.</h2>
+            <p>Follow the signals, decision, and customer outcome in one illustrated journey. Choose a purchase to begin.</p>
+          </div>
+          <p class="simulation-label">Illustrative simulation. Actual results vary.</p>
+        </div>
+
+        <fieldset class="scenario-list" id="scenario-list">
+          <legend>Choose a demo scenario</legend>
+          <label class="scenario-option"><input type="radio" name="scenario" value="everyday" checked><strong>Everyday purchase</strong><span>Familiar merchant and normal location · Approved</span></label>
+          <label class="scenario-option"><input type="radio" name="scenario" value="unusual"><strong>Unusual purchase</strong><span>New merchant and location · Verification needed</span></label>
+          <label class="scenario-option"><input type="radio" name="scenario" value="fraud"><strong>Confirmed fraud</strong><span>Customer selects “No, this wasn't me” · Blocked and restored</span></label>
+        </fieldset>
+
+        <div class="simulator__workspace">
+          <section class="panel transaction-panel" aria-labelledby="transaction-title">
+            <h3 id="transaction-title">Illustrative transaction</h3>
+            <div class="transaction-meta"><span>Merchant</span><strong id="sim-merchant">Northline Market</strong></div>
+            <div class="transaction-meta"><span>Amount</span><strong id="sim-amount">$34.60</strong></div>
+            <div class="transaction-meta"><span>Purchase context</span><strong id="sim-context">Familiar in-store purchase</strong></div>
+            <ul class="signals" id="sim-signals" aria-label="Signals revealed during analysis">
+              <li>Signals will appear when analysis runs.</li>
+            </ul>
+            <div class="risk">
+              <div class="risk__top"><span>Illustrative risk score</span><strong id="risk-value">Not assessed</strong></div>
+              <div class="risk__track" id="risk-meter" role="meter" aria-label="Illustrative risk score" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Not assessed"><span class="risk__fill" id="risk-fill"></span></div>
+            </div>
+          </section>
+
+          <section class="panel analysis-panel" aria-labelledby="analysis-title">
+            <h3 id="analysis-title">Purchase journey</h3>
+            <ol class="stage-list" id="stage-list">
+              <li data-state="pending"><span>01 · Waiting</span>Transaction</li>
+              <li data-state="pending"><span>02 · Waiting</span>Signals</li>
+              <li data-state="pending"><span>03 · Waiting</span>AI Analysis</li>
+              <li data-state="pending"><span>04 · Waiting</span>Risk Assessment</li>
+              <li data-state="pending"><span>05 · Waiting</span>Decision</li>
+              <li data-state="pending"><span>06 · Waiting</span>Customer Outcome</li>
+            </ol>
+            <div class="stage-detail" id="stage-detail">
+              <p class="eyebrow">What just happened</p>
+              <h4>Ready when you are</h4>
+              <p>Select a scenario and run the analysis.</p>
+              <p class="stage-detail__explanation">This is a visual explanation of the proposed experience, using fictional purchases and illustrative scores.</p>
+            </div>
+            <div id="sim-result" class="result-badge" aria-live="polite"></div>
+            <p id="stage-announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+          </section>
+        </div>
+        <div class="simulator__controls">
+          <button class="btn" id="run-analysis" type="button">Run analysis <span aria-hidden="true">→</span></button>
+          <button class="btn btn--secondary" id="replay-analysis" type="button" disabled>Replay</button>
+          <button class="btn btn--secondary" id="next-scenario" type="button">Next scenario</button>
+        </div>
+        <div class="step-controls" aria-label="Review simulation stages">
+          <button id="previous-step" type="button" disabled>← Previous step</button>
+          <button id="next-step" type="button" disabled>Next step →</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="benefits" aria-labelledby="benefits-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Built around your next move</p>
+          <h2 id="benefits-title">Protection that explains itself—and keeps life moving.</h2>
+        </div>
+        <div class="benefit-grid">
+          <article class="panel benefit">
+            <span class="badge badge--amber">! Clear confirmation</span>
+            <h3>Stay in control.</h3>
+            <p>An in-app banner and push notification ask you to confirm an unusual purchase. Approve it to keep moving, or reject it to start protection and recovery.</p>
+            <div class="app-prompt" aria-label="Illustrative purchase confirmation prompt">
+              <strong>Is this purchase yours?</strong>
+              <p>Meridian Digital · $412.00 · New location</p>
+              <div class="app-prompt__actions">
+                <button type="button" data-prompt-answer="yes">Yes, it's mine</button>
+                <button type="button" data-prompt-answer="no">No, this wasn't me</button>
+              </div>
+              <p class="app-prompt__result" id="prompt-result" role="status" aria-live="polite">Choose an answer to preview the next step.</p>
+            </div>
+          </article>
+          <article class="panel benefit">
+            <span class="badge badge--green">✓ Digital recovery</span>
+            <h3>Keep moving.</h3>
+            <p>After confirmed fraud, a replacement digital debit card can be added to a supported mobile wallet while the physical card follows by mail.</p>
+            <div class="wallet-card" aria-label="Illustrative replacement digital debit card ready for a supported wallet">
+              <div class="wallet-card__top"><span>Everyday Access · Digital debit</span><span aria-hidden="true">◇</span></div>
+              <div><span class="badge badge--green">✓ Digital access ready</span><strong>Ready for your wallet</strong></div>
+            </div>
+            <p class="wallet-note">Wallet availability depends on identity verification, device eligibility, wallet compatibility, and merchant acceptance.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--light" id="outcomes" aria-labelledby="outcomes-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow eyebrow--dark">What changes for customers</p>
+          <h2 id="outcomes-title">More confidence in every next step.</h2>
+        </div>
+        <div class="outcome-grid">
+          <article class="outcome-card"><span aria-hidden="true">01</span><h3>Fewer false declines</h3><p>A quick confirmation can keep a real purchase moving.</p></article>
+          <article class="outcome-card"><span aria-hidden="true">02</span><h3>Faster fraud response</h3><p>Confirmed fraud is blocked as soon as you reject it.</p></article>
+          <article class="outcome-card"><span aria-hidden="true">03</span><h3>Less friction</h3><p>One clear prompt replaces an uncertain next step.</p></article>
+          <article class="outcome-card"><span aria-hidden="true">04</span><h3>Continued access</h3><p>Eligible digital access bridges the physical-card wait.</p></article>
+          <article class="outcome-card"><span aria-hidden="true">05</span><h3>Greater confidence</h3><p>You can see what happened and what to do next.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" id="get-started" aria-labelledby="cta-title">
+      <div class="container cta-band__inner">
+        <div><p class="eyebrow">See the idea in action</p><h2 id="cta-title">Choose protection that keeps you moving.</h2></div>
+        <a class="btn btn--light" href="solution.html">Get Started <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">Everyday Access<p>Protection you can see and control.</p></div>
+        <nav class="footer-nav" aria-label="Site pages">
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="solution.html">Working solution</a>
+          <a href="marketing.html">Marketing</a>
+          <a href="evidence.html">Skills &amp; testing</a>
+          <a href="guide.html">Impact &amp; guide</a>
+        </nav>
+      </div>
+      <p class="site-footer__disclaimer">Everyday Access is a fictional concept created for entertainment purposes only. This website is not intended to market, advertise, or offer any real financial product or service. No accounts, cards, or services are available, and all names, features, and scenarios shown are illustrative.</p>
+    </div>
+  </footer>
+</body>
+</html>

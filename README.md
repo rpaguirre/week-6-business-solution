@@ -60,3 +60,26 @@ Build a website with **exactly five pages** that explains a business problem, de
 - [ ] Usage instructions are clear enough for another person to follow.
 - [ ] Expected impact is supported by evidence or labeled estimates.
 - [ ] Limitations, assumptions, and a realistic next improvement are stated.
+
+## Home page implementation
+
+Open `dist/index.html` directly in a browser; no build step or external dependency is required. The home page uses semantic HTML and lightweight vanilla JavaScript.
+
+| File | Purpose |
+| --- | --- |
+| `dist/tokens.css` | Shared color, type, spacing, radius, shadow, and motion tokens. |
+| `dist/components.css` | Shared buttons, panels, badges, navigation, footer, and focus styles. |
+| `dist/components.js` | Renders the same five-page footer and exact entertainment disclaimer on every page that includes it. |
+| `dist/home.css` | Home page layout and responsive presentation. |
+| `dist/home.js` | Mobile menu, video slot, purchase simulator, and confirmation preview. |
+| `dist/index.html` | Home page content and accessible structure. |
+
+The other four pages retain their existing `dist/style.css` and `dist/app.js` implementation. `style.css` imports the shared tokens and components, so future pages can adopt the same design system. Include `components.js` before page-specific scripts to render the shared footer. The home simulator is a scripted, illustrative explanation; the working-solution form in `solution.html` continues to use Decision Policy v1.
+
+### Add the problem video
+
+At the top of `dist/home.js`, fill in the single `videoConfig` object: `videoSrc` (local MP4), `posterSrc` (poster image), `captionsSrc` (WebVTT captions), and `title` (accessible video title). When `videoSrc` is empty, the 16:9 designed placeholder appears. When the video and captions paths are set, the page renders a player with controls and no autoplay. Replace the placeholder text inside `#video-transcript` in `dist/index.html` with the finished transcript. The group brief requires a problem video of at least 15 seconds; this slot remains a placeholder until that video is supplied.
+
+For a YouTube or Vimeo version, replace `#video-slot` with a responsive, titled `iframe` embed and keep the transcript area. Use the provider's privacy and caption controls, and do not enable autoplay with sound.
+
+The wordmark is text-based. The home `Get Started` destination currently leads to the existing working-solution demo; replace that destination if the group chooses another action.
