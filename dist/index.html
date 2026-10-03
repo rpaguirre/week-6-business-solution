@@ -1,1 +1,172 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The problem | Everyday Access</title><meta name="description" content="Group 4 debit-card fraud protection prototype: protect your account and preserve payment access."><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102640'/%3E%3Cpath d='M8 16l5 5 11-12' fill='none' stroke='%2371e4c2' stroke-width='4'/%3E%3C/svg%3E"><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="index.html">Everyday Access<span style="color:#71e4c2">.</span></a><nav aria-label="Main navigation"><a href="index.html" aria-current="page">Home</a><a href="solution.html" >Working solution</a><a href="marketing.html" >Marketing</a><a href="evidence.html" >Skills & testing</a><a href="guide.html" >Impact & guide</a></nav></header><main><div class="eyebrow">Protection without interruption</div><h1>A blocked card shouldn’t block your day.</h1><p class="lead">Real purchases get declined. Fraud can slip through. And a compromised debit card can leave customers waiting about five business days for a replacement.</p><a class="btn" href="solution.html">Try the protection demo</a><div class="grid"><section class="card"><span class="badge">Customers</span><h3>Time, uncertainty, lost access</h3><p>A checkout decline means an interrupted purchase and a call to the fraud line. A replacement-card wait disrupts everyday spending.</p></section><section class="card"><span class="badge">Fraud & operations teams</span><h3>Losses and avoidable calls</h3><p>Missed fraud creates losses. Incorrect decisions create service demand: the source deck reports 350K–400K fraud-related calls each month.</p></section><section class="card dark"><span class="badge">The proposal</span><h3>Check. Confirm. Protect. Restore.</h3><p>A bank-owned decision engine combines bank behavior and network signals, verifies unusual purchases in-app, and supports immediate digital-card recovery.</p></section></div><div class="two"><section><h2>Three decisions. One connected experience.</h2><p><b>Approve</b> routine purchases with less friction.<br><b>Verify</b> unusual activity with a clear “Was this you?” prompt.<br><b>Block and restore</b> when fraud is identified, with a digital credential for supported mobile wallets.</p><p>Option C is the team’s recommendation because it connects fraud decisions to customer recovery. The demonstration uses transparent rules to illustrate that workflow; it is not the proposed production AI model.</p></section><section class="card mint"><div class="metric">$250M</div><p>Annual fraud-loss baseline in the deck’s <b>planning case</b>, pending validation.</p><div class="metric">$73.1M</div><p>Target annual benefit from fraud reduction, fewer calls, and spend recovery. <b>Planning estimate—not a measured result.</b></p><a href="guide.html">See assumptions and impact</a></section></div><p class="small">Source: attached CEO Executive Upgrade, slides 1–7; Customer Slides, slides 1–6. The deck’s fraud-loss baseline is not independently verified bank data.</p></main><footer><b>Group 4 · BUSOBA 7256</b><nav aria-label="Footer navigation"><a href="index.html" aria-current="page">Home</a><a href="solution.html" >Working solution</a><a href="marketing.html" >Marketing</a><a href="evidence.html" >Skills & testing</a><a href="guide.html" >Impact & guide</a></nav>Rolando Aguirre · William Davis · Mary McCarroll · Emmanuel Oyedeji · Sidharth Tambe<br>Educational prototype. Synthetic transactions only. No bank connection or real card issuance.</footer><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Everyday Access explores a better response to false fraud declines, missed fraud, and the wait for a replacement debit card.">
+  <title>The problem | Everyday Access</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2306162d'/%3E%3Cpath d='M8 16l5 5 11-12' fill='none' stroke='%2356d9e9' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="home.css">
+  <script src="home.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="#home" aria-label="Everyday Access home">
+        <span class="brand__mark" aria-hidden="true">↗</span>
+        <span>Everyday Access</span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+        <span aria-hidden="true">☰</span> Menu
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Page navigation">
+        <a href="#home" aria-current="page">Home</a>
+        <a href="#problem">The Problem</a>
+        <a href="#problem-video">Problem Video</a>
+        <a href="#solution">Our Solution</a>
+      </nav>
+      <a class="btn site-header__cta" href="#solution">See Our Solution <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div>
+          <p class="eyebrow">A better way through fraud decisions</p>
+          <h1 id="hero-title">Stop fraud.<br><span>Keep your access.</span></h1>
+          <p class="hero__lead">A valid purchase should not leave you stranded. Real fraud should not slip through. And a replacement card should not mean days without access to your money.</p>
+          <div class="button-row">
+            <a class="btn" href="#problem">See the Problem <span aria-hidden="true">→</span></a>
+            <a class="btn btn--secondary" href="#solution">Explore Our Solution</a>
+          </div>
+          <p class="hero__tagline">Protection you can see and control.</p>
+        </div>
+        <figure class="hero-art" aria-label="Illustrative debit card and phone showing an unusual purchase waiting for customer confirmation">
+          <div class="hero-art__halo" aria-hidden="true"></div>
+          <div class="debit-card" aria-hidden="true">
+            <div class="debit-card__top"><span>EVERYDAY<br>ACCESS</span><span class="debit-card__chip"></span></div>
+            <div class="debit-card__bottom"><span>DEBIT •••• 2048</span><span>EA</span></div>
+          </div>
+          <div class="phone" aria-hidden="true">
+            <div class="phone__screen">
+              <div class="phone__top"><span>Everyday Access</span><span>9:41</span></div>
+              <p class="phone__title">Purchase check</p>
+              <span class="badge badge--amber">! Needs your confirmation</span>
+              <div class="phone__purchase"><span>Harbor Tech</span><strong>$86.40</strong><span>Today · New merchant</span></div>
+              <p class="phone__question">Is this purchase yours?</p>
+              <div class="phone__choice"><span>Yes, it's mine</span><span>No, it isn't</span></div>
+              <p class="phone__note">Your answer decides the next step.</p>
+            </div>
+          </div>
+          <figcaption class="art-caption">Illustrative interface. No real purchase is processed.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--light" id="problem" aria-labelledby="problem-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow eyebrow--dark">The problem and why it matters</p>
+          <h2 id="problem-title">Fraud protection can miss the mark in both directions.</h2>
+          <p>Customers need their debit cards to work when a purchase is real and to stop a purchase when it is not. The wrong decision creates a problem for customers and for the bank.</p>
+        </div>
+        <div class="problem-grid">
+          <article class="problem-card">
+            <span class="problem-card__number">01</span>
+            <h3>Real purchases get blocked.</h3>
+            <p>A valid purchase may be incorrectly flagged as fraud. The customer is left at checkout unable to complete it.</p>
+            <p class="problem-card__impact"><strong>Who feels it:</strong> the customer whose everyday payment is interrupted.</p>
+          </article>
+          <article class="problem-card">
+            <span class="problem-card__number">02</span>
+            <h3>Fraudulent purchases can go through.</h3>
+            <p>Current detection can miss true fraud. When the purchase succeeds, both customers and the bank can lose money.</p>
+            <p class="problem-card__impact"><strong>Who feels it:</strong> the customer and the bank.</p>
+          </article>
+          <article class="problem-card">
+            <span class="problem-card__number">03</span>
+            <h3>Recovery takes too long.</h3>
+            <p>After fraud is detected, a physical replacement debit card can take five days or more to arrive by mail.</p>
+            <p class="problem-card__impact"><strong>Why it matters:</strong> customers may lose easy access to their funds while they wait.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="problem-video" aria-labelledby="video-title">
+      <div class="container video-layout">
+        <div class="section-heading">
+          <p class="eyebrow">See the customer moment</p>
+          <h2 id="video-title">A real purchase. An unexpected stop.</h2>
+          <p>The problem video will show a customer trying to make a valid purchase and experiencing an incorrect fraud decline.</p>
+        </div>
+        <div>
+          <div class="video-frame" id="video-slot" aria-label="Problem video coming soon">
+            <div class="video-placeholder">
+              <span class="play-icon" aria-hidden="true">▶</span>
+              <strong>Problem video coming soon</strong>
+              <span>The customer's story will appear here.</span>
+            </div>
+          </div>
+          <details class="transcript">
+            <summary>Read video summary or transcript</summary>
+            <p id="video-transcript">The video is in production. It will show a customer attempting a valid debit purchase, receiving an incorrect fraud decline, and facing a delay while trying to regain access. A full transcript will be added with the finished video.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section solution" id="solution" aria-labelledby="solution-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Our team's proposed solution</p>
+          <h2 id="solution-title">Make the fraud decision clear. Keep the customer connected.</h2>
+          <p>Everyday Access pairs an AI purchase check with an immediate digital recovery option. The customer stays part of the decision.</p>
+        </div>
+        <div class="solution-grid">
+          <article class="panel solution-card">
+            <span class="badge badge--cyan">01 · Decide together</span>
+            <h3>Check every purchase. Ask when something looks unusual.</h3>
+            <p>An AI decision engine reviews each purchase. If one looks unusual, the customer gets an in-app request to confirm whether it is theirs.</p>
+            <ul class="decision-list">
+              <li><span class="badge badge--green">✓ Yes</span><span>The legitimate purchase continues without disruption.</span></li>
+              <li><span class="badge badge--red">✕ No</span><span>The fraudulent purchase is blocked, and recovery begins.</span></li>
+            </ul>
+          </article>
+          <article class="panel solution-card">
+            <span class="badge badge--blue">02 · Restore access</span>
+            <h3>Offer a mobile debit card while the physical card is mailed.</h3>
+            <p>After the customer identifies fraud, they can choose an instant digital debit card. If they agree, it is issued right away for a supported mobile wallet while they wait for the replacement physical card.</p>
+            <div class="wallet-preview" aria-label="Illustrative digital debit card ready for a mobile wallet">
+              <span>EVERYDAY ACCESS · DIGITAL DEBIT</span>
+              <strong>Connected to your funds</strong>
+              <span class="badge badge--green">✓ Mobile access ready</span>
+            </div>
+            <p class="wallet-note">Wallet availability depends on identity verification, device eligibility, wallet compatibility, and merchant acceptance.</p>
+          </article>
+        </div>
+        <p class="solution-summary">The goal is simple: protect customers' funds without adding unnecessary disruption to their lives.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">Everyday Access<p>Protection you can see and control.</p></div>
+        <nav class="footer-nav" aria-label="Page sections">
+          <a href="#home">Home</a>
+          <a href="#problem">The Problem</a>
+          <a href="#problem-video">Problem Video</a>
+          <a href="#solution">Our Solution</a>
+        </nav>
+      </div>
+      <p class="site-footer__disclaimer">Everyday Access is a fictional concept created for entertainment purposes only. This website is not intended to market, advertise, or offer any real financial product or service. No accounts, cards, or services are available, and all names, features, and scenarios shown are illustrative.</p>
+    </div>
+  </footer>
+</body>
+</html>
