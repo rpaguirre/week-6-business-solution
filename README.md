@@ -63,8 +63,8 @@ Build a website with **exactly five pages** that explains a business problem, de
 
 ## Running the website
 
-Open `dist/index.html` to start the five-page website; it needs no build step. The Home page links to `solution.html`, `marketing.html`, `evidence.html`, and `guide.html`. `dist/tokens.css` holds the Home page colors, type, spacing, and motion values; `dist/components.css` holds its navigation, buttons, panels, and footer; `dist/home.css` contains its layout; and `dist/home.js` controls the mobile menu and video slot. The other four pages use `dist/style.css` and `dist/app.js`.
+Open `dist/index.html` to start the five-page website; it needs no build step. The Home page links to `solution.html`, `marketing.html`, `evidence.html`, and `guide.html`. `dist/tokens.css` holds the Home page colors, type, spacing, and motion values; `dist/components.css` holds its navigation, buttons, panels, and footer; `dist/home.css` contains its layout; and `dist/home.js` controls the mobile menu. The other four pages use `dist/style.css` and `dist/app.js`.
 
-The problem video is still in progress. Its 16:9 placeholder is intentional. When an MP4 of at least 8 seconds, a poster image, and WebVTT captions are ready, fill in the `videoConfig` object at the top of `dist/home.js`. Then replace the placeholder summary in `#video-transcript` with the finished transcript. The player uses controls and does not autoplay.
+`dist/problem-video.mp4` is the supplied first segment of the problem video. It runs approximately 28 seconds and is embedded with playback controls. The spoken dialogue is transcribed under “Video transcript” from the dialogue shown in the video. A separate WebVTT caption track has not been supplied.
 
-The Home page calls to action link to its problem and solution sections.
+The Home page uses Northstar Bank and SmartShield Fraud Protection branding. Its header links to the other four pages.
