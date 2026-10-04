@@ -63,8 +63,8 @@ Build a website with **exactly five pages** that explains a business problem, de
 
 ## Home page on the `home-problem` branch
 
-This branch contains the Home page. Open `dist/index.html` directly in a browser; it needs no build step. `dist/tokens.css` holds shared colors, type, spacing, and motion values; `dist/components.css` holds the navigation, buttons, panels, and footer; `dist/home.css` contains the Home layout; and `dist/home.js` controls the mobile menu and video slot. The older `dist/style.css` and `dist/app.js` are retained for team integration.
+This branch contains the Home page. Open `dist/index.html` directly in a browser; it needs no build step. `dist/tokens.css` holds shared colors, type, spacing, and motion values; `dist/components.css` holds the navigation, buttons, panels, and footer; `dist/home.css` contains the Home layout; and `dist/home.js` controls the mobile menu. The older `dist/style.css` and `dist/app.js` are retained for team integration.
 
-The problem video is still in progress. Its 16:9 placeholder is intentional. When an MP4 of at least 8 seconds, a poster image, and WebVTT captions are ready, fill in the `videoConfig` object at the top of `dist/home.js`. Then replace the placeholder summary in `#video-transcript` with the finished transcript. The player uses controls and does not autoplay.
+`dist/problem-video.mp4` is the supplied first segment of the problem video. It runs approximately 28 seconds and is embedded with playback controls. The spoken dialogue is transcribed under “Video transcript” from the dialogue shown in the video. A separate WebVTT caption track has not been supplied.
 
-The logo is a text wordmark. The page calls to action link to sections on this page, so this branch works on its own while the rest of the site is developed.
+The Home page uses Northstar Bank and SmartShield Fraud Protection branding. Its header links to the other four pages when the branches are integrated.
