@@ -1,53 +1,65 @@
-/*
- * SmartShield Skills & Testing Tools content
- * Add an entry by copying one object in `entries` and setting its type to
- * "business", "design", or "testing". Edit any field here; remove an entry by
- * deleting its object. Leave a field empty to show the "To be added" state.
- * For evidence images, add both imageSrc and a descriptive imageAlt.
- * This is the only file you need to edit to fill in skill details.
+/* Evidence records. To add an image, save it in dist and set its src to the
+ * filename, alt to a short description, and caption to its context.
+ * The UX/design record has separate before and after images.
  */
 window.smartShieldSkills = {
   categories: [
-    {
-      type: "business",
-      title: "Business Solution Skill / MCP",
-      description: "Show how a tool shaped the debit protection workflow and its customer outcome."
-    },
-    {
-      type: "design",
-      title: "UX / Design Skill / MCP",
-      description: "Show how a tool made the experience clearer and easier to use."
-    },
-    {
-      type: "testing",
-      title: "Testing / Quality Skill / MCP",
-      description: "Show how a tool checked the site and what improved as a result."
-    }
+    { type: 'business', title: 'Business solution skill', shortTitle: 'Business solution', indexDescription: 'Decision Policy v1' },
+    { type: 'design', title: 'UX and design skill', shortTitle: 'UX and design', indexDescription: 'Frontend Design Premium' },
+    { type: 'testing', title: 'Testing and quality skill', shortTitle: 'Testing and quality', indexDescription: 'Playwright' }
   ],
   entries: [
     {
-      type: "business",
-      name: "",
-      purpose: "",
-      evidence: { description: "", linkUrl: "", imageSrc: "", imageAlt: "" },
-      interaction: "",
-      contribution: ""
+      type: 'business',
+      name: 'Decision Policy v1',
+      purpose: 'Applies the demo’s approve, verify, block, and recovery rules to synthetic debit purchases.',
+      input: '$800 purchase; network risk 25; unfamiliar merchant; recognized device; supported wallet.',
+      interaction: 'The policy adds 15 for the unfamiliar merchant and 15 for an amount of at least $500. Score 55 falls in the verify range. A customer “yes” or “no” resolves the next action.',
+      contribution: 'The working demo asks “Was this you?” A yes approves the synthetic purchase; a no blocks it and offers a simulated recovery path.',
+      evidence: {
+        description: 'The project policy specifies the thresholds; the demo’s evaluate, confirm, and recover functions apply them. These are illustrative rules, not a live bank decision.',
+        linkUrl: 'https://github.com/rpaguirre/week-6-business-solution/blob/main/skills/decision-policy/SKILL.md',
+        linkText: 'Read the decision policy'
+      },
+      screenshot: { src: '', alt: '', caption: '', placeholder: 'Show the sample purchase input and its verify or recovery result.' }
     },
     {
-      type: "design",
-      name: "",
-      purpose: "",
-      evidence: { description: "", linkUrl: "", imageSrc: "", imageAlt: "" },
-      interaction: "",
-      contribution: ""
+      type: 'design',
+      name: 'Frontend Design Premium',
+      purpose: 'Makes the evidence readable and easy to inspect across desktop, narrow windows, and mobile.',
+      input: 'The Evidence page used a five-column table for three distinct roles. Its cells became a long, repetitive stack on small screens.',
+      interaction: 'The design review called for a quick role index and a consistent input → interaction → resulting change sequence for each skill, with source details kept alongside the claim.',
+      contribution: 'This page now uses three evidence records. The sequence stays visible as columns on wide screens and reflows into one readable column on phones.',
+      evidence: {
+        description: 'The revised Evidence page is the design output. It retains the Northstar colors and navigation while replacing the table layout.'
+      },
+      screenshot: {
+        before: {
+          src: 'skills-page-before.png',
+          alt: 'Original mobile Evidence page with table text wrapping into narrow vertical columns.',
+          caption: 'Original mobile layout, before the Evidence page redesign.'
+        },
+        after: {
+          src: '',
+          alt: '',
+          caption: '',
+          placeholder: 'Add a screenshot of the updated working Evidence page.'
+        }
+      }
     },
     {
-      type: "testing",
-      name: "Playwright",
-      purpose: "Automate browser tests of the SmartShield website, including navigation, controls, and mobile layouts.",
-      evidence: { description: "", linkUrl: "", imageSrc: "", imageAlt: "" },
-      interaction: "",
-      contribution: ""
+      type: 'testing',
+      name: 'Playwright',
+      purpose: 'Automates a real browser to test page behavior and layouts at different screen sizes.',
+      input: 'The Evidence page at 1280, 800, 390, and 320 pixel widths, plus role links and the mobile menu.',
+      interaction: 'Playwright opened the local page, checked for horizontal overflow and page errors, followed a role link, and opened the mobile menu.',
+      contribution: 'All three records rendered, none of the checked widths overflowed, the role link and menu worked, and the browser reported no page errors.',
+      evidence: {
+        description: 'These are local browser checks of the Evidence page. They do not measure the accuracy of a production fraud system.',
+        linkUrl: 'https://playwright.dev/docs/intro',
+        linkText: 'About Playwright'
+      },
+      screenshot: { src: '', alt: '', caption: '', placeholder: 'Show the Playwright browser check or its results.' }
     }
   ]
 };
