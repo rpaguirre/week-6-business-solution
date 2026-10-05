@@ -1,4 +1,4 @@
-body { background: var(--color-navy-950); color: var(--color-ice); font-size: var(--text-base); line-height: var(--leading-body); }
+body { --text-xs: 1rem; --text-sm: 1rem; background: var(--color-navy-950); color: var(--color-ice); font-size: var(--text-base); line-height: var(--leading-body); }
 main { overflow: hidden; }
 h1, h2, h3, p, th, td { overflow-wrap: anywhere; }
 h1, h2, h3 { color: var(--color-white); }
@@ -66,3 +66,6 @@ p { margin-top: 0; }
   .category-grid { grid-template-columns: 1fr; }
   .evidence-hero { padding-bottom: var(--space-12); }
 }
+
+/* Match the home-page header typography. */
+.site-brand__bank, .site-brand__tagline, .site-nav a, .site-footer__disclaimer { font-size: 1rem; }
