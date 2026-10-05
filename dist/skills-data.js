@@ -1,5 +1,6 @@
-/* Evidence records. To add a screenshot, save it in dist and set screenshot.src
- * to its filename, screenshot.alt to a short description, and caption to its context.
+/* Evidence records. To add an image, save it in dist and set its src to the
+ * filename, alt to a short description, and caption to its context.
+ * The UX/design record has separate before and after images.
  */
 window.smartShieldSkills = {
   categories: [
@@ -32,7 +33,19 @@ window.smartShieldSkills = {
       evidence: {
         description: 'The revised Evidence page is the design output. It retains the Northstar colors and navigation while replacing the table layout.'
       },
-      screenshot: { src: '', alt: '', caption: '', placeholder: 'Show the Evidence layout on a desktop and a phone.' }
+      screenshot: {
+        before: {
+          src: 'skills-page-before.png',
+          alt: 'Original mobile Evidence page with table text wrapping into narrow vertical columns.',
+          caption: 'Original mobile layout, before the Evidence page redesign.'
+        },
+        after: {
+          src: '',
+          alt: '',
+          caption: '',
+          placeholder: 'Add a screenshot of the updated working Evidence page.'
+        }
+      }
     },
     {
       type: 'testing',

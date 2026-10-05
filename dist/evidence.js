@@ -45,10 +45,9 @@
     parent.append(note);
   }
 
-  function addScreenshot(parent, screenshot = {}) {
-    const section = element('section', 'evidence-screenshot');
-    section.append(element('h4', '', 'Screenshot evidence'));
+  function screenshotFrame(screenshot = {}, label = '') {
     const frame = element('div', 'evidence-screenshot__frame');
+    const caption = screenshot.caption ? element('p', 'evidence-screenshot__caption', screenshot.caption) : null;
     const placeholder = () => {
       frame.classList.add('evidence-screenshot__frame--empty');
       const icon = element('span', 'evidence-screenshot__icon', '▣');
@@ -58,6 +57,7 @@
         element('strong', '', 'Screenshot to be added'),
         element('p', '', screenshot.placeholder || 'Add a screenshot that shows this skill in use.')
       );
+      caption?.remove();
     };
 
     let source;
@@ -66,21 +66,48 @@
     } catch { source = null; }
     if (source && ['http:', 'https:'].includes(source.protocol) && screenshot.alt) {
       const image = element('img', 'evidence-screenshot__image');
-      const caption = screenshot.caption ? element('p', 'evidence-screenshot__caption', screenshot.caption) : null;
       image.src = source.href;
       image.alt = screenshot.alt;
       image.loading = 'lazy';
       image.decoding = 'async';
-      image.addEventListener('error', () => {
-        placeholder();
-        caption?.remove();
-      }, { once: true });
-      frame.append(image);
-      if (caption) section.append(caption);
+      image.addEventListener('error', placeholder, { once: true });
+      if (label) {
+        const link = element('a', 'evidence-screenshot__image-link');
+        link.href = source.href;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.setAttribute('aria-label', `View full ${label.toLowerCase()} screenshot`);
+        link.append(image);
+        frame.append(link);
+      } else {
+        frame.append(image);
+      }
     } else {
       placeholder();
     }
-    section.insertBefore(frame, section.querySelector('.evidence-screenshot__caption'));
+    return { frame, caption };
+  }
+
+  function addScreenshot(parent, screenshot = {}) {
+    const section = element('section', 'evidence-screenshot');
+    section.append(element('h4', '', 'Evidence'));
+    if (screenshot.before || screenshot.after) {
+      const comparison = element('div', 'evidence-screenshot__comparison');
+      [['Before', screenshot.before], ['After', screenshot.after]].forEach(([label, shot]) => {
+        const panel = element('div', 'evidence-screenshot__panel');
+        panel.append(element('h5', '', label));
+        const { frame, caption } = screenshotFrame(shot, label);
+        frame.classList.add('evidence-screenshot__frame--comparison');
+        panel.append(frame);
+        if (caption) panel.append(caption);
+        comparison.append(panel);
+      });
+      section.append(comparison);
+    } else {
+      const { frame, caption } = screenshotFrame(screenshot);
+      section.append(frame);
+      if (caption) section.append(caption);
+    }
     parent.append(section);
   }
 
