@@ -3,18 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#102640">
-  <title>Working solution | Everyday Access</title>
+  <meta name="theme-color" content="#06162d">
+  <title>Working solution | Northstar Bank SmartShield</title>
   <meta name="description" content="AI-assisted debit-card fraud prevention demonstration using synthetic transaction data.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102640'/%3E%3Cpath d='M8 16l5 5 11-12' fill='none' stroke='%2371e4c2' stroke-width='4'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="fraud-base.css">
   <link rel="stylesheet" href="fraud-demo.css">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="solution-theme.css">
+  <script src="solution-nav.js" defer></script>
 </head>
 <body>
   <a class="fd-skip" href="#main-content">Skip to main content</a>
-  <header>
-    <a class="brand" href="index.html">Everyday Access<span style="color:#71e4c2">.</span></a>
-    <nav aria-label="Main navigation"><a href="index.html">Home</a><a href="solution.html" aria-current="page">Working solution</a><a href="marketing.html">Marketing</a><a href="evidence.html">Skills & testing</a><a href="guide.html">Impact & guide</a></nav>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-brand" href="index.html" aria-label="Northstar Bank SmartShield Fraud Protection home">
+        <span class="site-brand__bank">Northstar Bank</span>
+        <span class="site-brand__product">SmartShield Fraud Protection</span>
+        <span class="site-brand__tagline">Protection that keeps you moving.</span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+        <span aria-hidden="true">☰</span> Menu
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home/Problem</a>
+        <a href="solution.html" aria-current="page">Working solution</a>
+        <a href="marketing.html">Marketing</a>
+        <a href="evidence.html">Skills &amp; testing</a>
+        <a href="guide.html">Impact &amp; guide</a>
+      </nav>
+    </div>
   </header>
   <main id="main-content" class="fd-main">
     <section class="fd-hero" aria-labelledby="page-title">

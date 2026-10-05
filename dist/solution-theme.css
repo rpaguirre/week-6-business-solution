@@ -1,0 +1,43 @@
+/* Home-page palette and shared header applied to the transaction simulator. */
+body { --text-xs:1rem; --text-sm:1rem; background:var(--color-navy-950); color:var(--color-ice); font-family:var(--font-sans); font-size:var(--text-base); line-height:var(--leading-body); }
+.site-header { padding:0; display:block; }
+.site-header nav { margin-top:0; flex-wrap:nowrap; }
+.site-header .site-nav a { padding:0; border-bottom:0; }
+.site-brand__bank,.site-brand__tagline,.site-nav a { font-size:1rem; }
+.site-header .menu-toggle { margin:0; font:inherit; }
+.fd-main {
+  --fd-navy:var(--color-ice); --fd-slate:var(--color-muted); --fd-muted:var(--color-muted);
+  --fd-line:var(--color-line); --fd-soft:var(--color-navy-900); --fd-teal:var(--color-blue);
+  --fd-green:var(--color-green); --fd-green-soft:#103d38;
+  --fd-amber:var(--color-amber); --fd-amber-soft:#3d321e;
+  --fd-red:var(--color-red); --fd-red-soft:#3f2639;
+  background:var(--color-navy-950); color:var(--color-ice); margin:0;
+}
+.fd-main h1,.fd-main h2,.fd-main h3,.fd-main h4 { color:var(--color-white); }
+.fd-main .fd-hero { background:radial-gradient(circle at 82% 30%,#174974 0,transparent 36%),linear-gradient(150deg,var(--color-navy-900),var(--color-navy-950) 70%); }
+.fd-main button { background:var(--color-blue); color:var(--color-white); font-family:var(--font-sans); }
+.fd-main button:hover { background:var(--color-blue-hover); }
+.fd-main button:focus-visible,.fd-main select:focus-visible { outline-color:var(--color-cyan); }
+.fd-main .fd-button-secondary { background:var(--color-surface)!important; color:var(--color-ice)!important; border-color:var(--color-line)!important; }
+.fd-main .fd-scenario-control,.fd-main .fd-flow,.fd-main .fd-panel,.fd-main .fd-verify-question,.fd-main .fd-verify-result,.fd-main .fd-kpi-grid,.fd-main .fd-metric-context>div { background:var(--color-surface); }
+.fd-main select { color-scheme:dark; background:var(--color-navy-950); color:var(--color-ice); border-color:var(--color-line); }
+.fd-main .fd-icon,.fd-main .fd-explanation,.fd-main .fd-disclaimer { background:var(--color-surface-raised); color:var(--color-cyan); }
+.fd-main .fd-explanation p,.fd-main .fd-disclaimer { color:var(--color-ice); }
+.fd-main .fd-flow li.fd-active { background:var(--color-surface-raised); }
+.fd-main .fd-flow>li>span { background:var(--color-navy-800); color:var(--color-ice); }
+.fd-main .fd-flow .fd-active>span,.fd-main .fd-flow .fd-complete>span { background:var(--color-blue); color:var(--color-white); }
+.fd-main .fd-gauge { --gauge:var(--color-cyan); background:conic-gradient(var(--gauge) var(--score),var(--color-line) 0); }
+.fd-main .fd-gauge-verify { --gauge:var(--color-amber); }
+.fd-main .fd-gauge-decline { --gauge:var(--color-red); }
+.fd-main .fd-gauge:before { background:var(--color-surface); }
+.fd-main .fd-details>div,.fd-main .fd-signal-group>div { border-color:var(--color-line); }
+.fd-main .fd-yes { background:var(--color-green)!important; color:var(--color-navy-950)!important; }
+.fd-main .fd-no { background:var(--fd-red-soft)!important; color:var(--color-red)!important; border-color:var(--color-red)!important; }
+.fd-main .fd-text-button { background:transparent!important; color:var(--color-cyan)!important; }
+.fd-main .fd-pending { background:var(--fd-amber-soft); }
+.fd-main .fd-approved-result { background:var(--fd-green-soft); border-color:var(--color-green); }
+.fd-main .fd-blocked-result { background:var(--fd-red-soft); border-color:var(--color-red); }
+.fd-main .fd-decision-rail .fd-verify { border-color:var(--color-amber); }
+.fd-main .fd-spinner { border-color:var(--color-line); border-top-color:var(--color-cyan); }
+body>footer { background:var(--color-navy-950); color:var(--color-ice); border-top:1px solid var(--color-line); }
+@media(max-width:60rem) { .site-header nav { flex-wrap:nowrap; } .site-header .menu-toggle { display:inline-flex; } }
