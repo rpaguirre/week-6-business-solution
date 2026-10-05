@@ -2,11 +2,11 @@
   'use strict';
 
   const data = window.smartShieldSkills;
-  const categoryGrid = document.getElementById('category-grid');
+  const index = document.getElementById('role-index');
   const groups = document.getElementById('skill-groups');
 
   if (!data || !Array.isArray(data.categories) || !Array.isArray(data.entries)) {
-    groups.textContent = 'Skill details are temporarily unavailable.';
+    groups.textContent = 'Evidence details are temporarily unavailable.';
     return;
   }
 
@@ -15,13 +15,6 @@
     design: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="5"/><path d="M6 17h36M17 17v25M24 26h11M24 32h8"/></svg>',
     testing: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 4 7 11v12c0 11 7 17 17 21 10-4 17-10 17-21V11L24 4Z"/><path d="m16 24 6 6 11-13"/></svg>'
   };
-  const columns = [
-    ['name', 'Skill / MCP Name'],
-    ['purpose', 'Purpose'],
-    ['evidence', 'Evidence'],
-    ['interaction', 'Meaningful Interaction'],
-    ['contribution', 'What It Contributed or Changed']
-  ];
 
   function element(tag, className, content) {
     const node = document.createElement(tag);
@@ -30,125 +23,104 @@
     return node;
   }
 
-  function placeholder() {
-    const node = element('span', 'field-placeholder');
-    const icon = element('span', 'field-placeholder__icon', '○');
-    icon.setAttribute('aria-hidden', 'true');
-    node.append(icon, document.createTextNode('To be added'));
-    return node;
+  function appendText(parent, value) {
+    parent.append(element('p', '', value || 'Evidence has not been supplied yet.'));
   }
 
-  function filledText(value) {
-    return typeof value === 'string' && value.trim()
-      ? element('span', 'field-value', value.trim())
-      : placeholder();
+  function addEvidence(parent, evidence) {
+    if (!evidence) return;
+    const note = element('div', 'evidence-source');
+    note.append(element('span', 'evidence-source__label', 'Source trail'));
+    if (evidence.description) appendText(note, evidence.description);
+    if (evidence.linkUrl) {
+      try {
+        const url = new URL(evidence.linkUrl, document.baseURI);
+        if (['http:', 'https:'].includes(url.protocol)) {
+          const link = element('a', 'evidence-link', evidence.linkText || 'View source');
+          link.href = url.href;
+          note.append(link);
+        }
+      } catch { /* Keep the written source trail when a link is malformed. */ }
+    }
+    parent.append(note);
   }
 
-  function validUrl(value) {
-    if (typeof value !== 'string' || !value.trim()) return null;
+  function addScreenshot(parent, screenshot = {}) {
+    const section = element('section', 'evidence-screenshot');
+    section.append(element('h4', '', 'Screenshot evidence'));
+    const frame = element('div', 'evidence-screenshot__frame');
+    const placeholder = () => {
+      frame.classList.add('evidence-screenshot__frame--empty');
+      const icon = element('span', 'evidence-screenshot__icon', '▣');
+      icon.setAttribute('aria-hidden', 'true');
+      frame.replaceChildren(
+        icon,
+        element('strong', '', 'Screenshot to be added'),
+        element('p', '', screenshot.placeholder || 'Add a screenshot that shows this skill in use.')
+      );
+    };
+
+    let source;
     try {
-      const url = new URL(value.trim(), document.baseURI);
-      return ['http:', 'https:', 'file:'].includes(url.protocol) ? url.href : null;
-    } catch {
-      return null;
+      source = screenshot.src ? new URL(screenshot.src, document.baseURI) : null;
+    } catch { source = null; }
+    if (source && ['http:', 'https:'].includes(source.protocol) && screenshot.alt) {
+      const image = element('img', 'evidence-screenshot__image');
+      const caption = screenshot.caption ? element('p', 'evidence-screenshot__caption', screenshot.caption) : null;
+      image.src = source.href;
+      image.alt = screenshot.alt;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      image.addEventListener('error', () => {
+        placeholder();
+        caption?.remove();
+      }, { once: true });
+      frame.append(image);
+      if (caption) section.append(caption);
+    } else {
+      placeholder();
     }
+    section.insertBefore(frame, section.querySelector('.evidence-screenshot__caption'));
+    parent.append(section);
   }
 
-  function evidenceContent(entry) {
-    const box = element('div', 'evidence-content');
-    const evidence = entry.evidence || {};
-    const description = typeof evidence.description === 'string' ? evidence.description.trim() : '';
-    const link = validUrl(evidence.linkUrl);
-    const image = validUrl(evidence.imageSrc);
-    const alt = typeof evidence.imageAlt === 'string' ? evidence.imageAlt.trim() : '';
+  data.categories.forEach((category) => {
+    const anchor = `role-${category.type}`;
+    const indexLink = element('a', 'role-index__link');
+    indexLink.href = `#${anchor}`;
+    indexLink.append(element('span', 'role-index__icon'));
+    indexLink.firstChild.innerHTML = icons[category.type] || '';
+    const indexCopy = element('span', 'role-index__copy');
+    indexCopy.append(element('strong', '', category.shortTitle), element('small', '', category.indexDescription));
+    indexLink.append(indexCopy, element('span', 'role-index__arrow', '↓'));
+    index.append(indexLink);
 
-    if (description) box.append(element('span', 'field-value', description));
-    if (link) {
-      const anchor = element('a', 'evidence-link', `View evidence for ${entry.name?.trim() || 'this skill'}`);
-      anchor.href = link;
-      box.append(anchor);
-    }
-    if (image && alt) {
-      const screenshot = element('img', 'evidence-image');
-      screenshot.src = image;
-      screenshot.alt = alt;
-      screenshot.loading = 'lazy';
-      box.append(screenshot);
-    }
-    if (!box.childNodes.length) box.append(placeholder());
-    return box;
-  }
-
-  function interactionContent(value, id) {
-    if (typeof value !== 'string' || !value.trim()) return placeholder();
-    const full = value.trim();
-    if (full.length <= 280) return filledText(full);
-
-    const wrap = element('div', 'interaction-content');
-    const breakAt = full.lastIndexOf(' ', 280);
-    const preview = full.slice(0, breakAt > 180 ? breakAt : 280).trimEnd() + '…';
-    const text = element('span', 'field-value', preview);
-    text.id = id;
-    const button = element('button', 'read-more', 'Read more');
-    button.type = 'button';
-    button.setAttribute('aria-controls', id);
-    button.setAttribute('aria-expanded', 'false');
-    button.addEventListener('click', () => {
-      const expanded = button.getAttribute('aria-expanded') === 'true';
-      text.textContent = expanded ? preview : full;
-      button.textContent = expanded ? 'Read more' : 'Read less';
-      button.setAttribute('aria-expanded', String(!expanded));
-    });
-    wrap.append(text, button);
-    return wrap;
-  }
-
-  data.categories.forEach((category, categoryIndex) => {
     const entries = data.entries.filter((entry) => entry.type === category.type);
-    const card = element('article', 'category-card panel--light');
-    const icon = element('span', 'category-icon');
-    icon.innerHTML = icons[category.type] || '';
-    card.append(icon, element('h3', '', category.title), element('p', '', category.description));
-    categoryGrid.append(card);
+    entries.forEach((entry) => {
+      const article = element('article', `skill-record skill-record--${category.type}`);
+      article.id = anchor;
 
-    const section = element('section', 'skill-group');
-    const heading = element('div', 'skill-group__heading');
-    const headingIcon = element('span', 'skill-group__icon');
-    headingIcon.innerHTML = icons[category.type] || '';
-    heading.append(headingIcon, element('h3', '', category.title));
-    section.append(heading);
+      const identity = element('div', 'skill-record__identity');
+      identity.append(element('p', 'skill-record__role', category.title));
+      identity.append(element('h3', '', entry.name || 'Tool name pending'));
+      appendText(identity, entry.purpose);
+      article.append(identity);
 
-    const table = element('table', 'skill-table');
-    table.append(element('caption', 'sr-only', `${category.title}: skill names, purpose, evidence, interaction, and contribution`));
-    const thead = document.createElement('thead');
-    const headerRow = document.createElement('tr');
-    columns.forEach(([key, label]) => {
-      const th = element('th', '', label);
-      th.scope = 'col';
-      th.id = `col-${category.type}-${key}`;
-      headerRow.append(th);
-    });
-    thead.append(headerRow);
-    table.append(thead);
-
-    const tbody = document.createElement('tbody');
-    entries.forEach((entry, rowIndex) => {
-      const row = document.createElement('tr');
-      columns.forEach(([key, label]) => {
-        const cell = document.createElement(key === 'name' ? 'th' : 'td');
-        if (key === 'name') cell.scope = 'row';
-        cell.setAttribute('headers', `col-${category.type}-${key}`);
-        cell.setAttribute('data-label', label);
-        if (key === 'evidence') cell.append(evidenceContent(entry));
-        else if (key === 'interaction') cell.append(interactionContent(entry.interaction, `interaction-${categoryIndex}-${rowIndex}`));
-        else cell.append(filledText(entry[key]));
-        row.append(cell);
+      const trail = element('ol', 'evidence-trail');
+      [
+        ['Input', entry.input],
+        ['Interaction', entry.interaction],
+        ['Resulting change', entry.contribution]
+      ].forEach(([label, value]) => {
+        const step = element('li', 'evidence-trail__step');
+        step.append(element('h4', '', label));
+        appendText(step, value);
+        trail.append(step);
       });
-      tbody.append(row);
+      article.append(trail);
+      addEvidence(article, entry.evidence);
+      addScreenshot(article, entry.screenshot);
+      groups.append(article);
     });
-    table.append(tbody);
-    section.append(table);
-    groups.append(section);
   });
-
 })();
