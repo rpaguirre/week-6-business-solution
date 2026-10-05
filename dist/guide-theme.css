@@ -1,0 +1,21 @@
+/* Shared home-page palette and header for Impact & guide. */
+body { --text-xs:1rem; --text-sm:1rem; background:var(--color-navy-950); color:var(--color-ice); font-family:var(--font-sans); font-size:var(--text-base); line-height:var(--leading-body); }
+.site-header { display:block; padding:0; }
+.site-header nav { margin-top:0; flex-wrap:nowrap; }
+.site-header .site-nav a { padding:0; border-bottom:0; }
+.site-brand__bank,.site-brand__tagline,.site-nav a { font-size:1rem; }
+.site-header .menu-toggle { margin:0; font:inherit; }
+.guide-main { max-width:var(--page-width); padding:clamp(3rem,6vw,6rem) 0; }
+.guide-main h1,.guide-main h2,.guide-main h3 { color:var(--color-white); overflow-wrap:anywhere; }
+.guide-main h1 { font-size:clamp(2.4rem,5vw,4rem)!important; }
+.guide-main .eyebrow { color:var(--color-cyan); }
+.guide-main .card { background:var(--color-surface); border:1px solid var(--color-line); border-radius:var(--radius-lg); box-shadow:var(--shadow-panel); }
+.guide-main .dark { background:var(--color-navy-900); }
+.guide-main .mint { background:var(--color-surface-raised); border-color:var(--color-cyan); }
+.guide-main .step { border-color:var(--color-line); }
+.guide-main table { background:var(--color-surface); color:var(--color-ice); }
+.guide-main th { background:var(--color-surface-raised); color:var(--color-white); }
+.guide-main td,.guide-main th { border-color:var(--color-line); }
+.guide-main .btn { font-family:var(--font-sans); }
+body>footer { background:var(--color-navy-950); color:var(--color-ice); border-top:1px solid var(--color-line); }
+@media(max-width:60rem) { .site-header .menu-toggle { display:inline-flex; } }
