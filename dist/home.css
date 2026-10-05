@@ -9,12 +9,13 @@ p { margin-top: 0; }
 .hero__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: var(--space-12); align-items: center; }
 .hero h1 { max-width: 10ch; margin: var(--space-5) 0 var(--space-6); font-size: var(--text-hero); line-height: var(--leading-tight); letter-spacing: -.065em; }
 .hero h1 span { color: var(--color-cyan); }
+.hero h1 .hero__alert { color: var(--color-white); animation: alert-color-cycle 6.4s ease-in-out infinite; }
 .hero__lead { max-width: 38rem; color: #d6e8f6; font-size: clamp(1.15rem, 2vw, 1.38rem); line-height: 1.52; }
 .hero-art { position: relative; min-height: 32rem; display: grid; place-items: center; margin: 0; }
 .hero-art__halo { position: absolute; width: min(100%, 34rem); aspect-ratio: 1; border: 1px solid #2a6487; border-radius: 50%; background: radial-gradient(circle, rgba(86,217,233,.12), transparent 62%); }
 .hero-art__halo::before, .hero-art__halo::after { content: ""; position: absolute; inset: 12%; border: 1px solid rgba(86,217,233,.18); border-radius: 50%; }
 .hero-art__halo::after { inset: 27%; }
-.debit-card { position: absolute; z-index: 2; width: min(18rem, 60%); aspect-ratio: 1.58; top: 17%; left: 5%; display: flex; flex-direction: column; justify-content: space-between; padding: var(--space-5); border: 1px solid #58b7df; border-radius: var(--radius-lg); background: linear-gradient(140deg, #1a568b, #0a2a4b 68%, #08203e); box-shadow: var(--shadow-float); transform: rotate(-9deg); }
+.debit-card { position: absolute; z-index: 2; width: min(18rem, 60%); aspect-ratio: 1.58; top: 17%; left: 5%; display: flex; flex-direction: column; justify-content: space-between; padding: var(--space-5); border: 1px solid #58b7df; border-radius: var(--radius-lg); background: linear-gradient(140deg, #1a568b, #0a2a4b 68%, #08203e); box-shadow: var(--shadow-float); transform: rotate(-9deg); animation: debit-card-visibility-cycle 6.4s ease-in-out infinite; will-change: opacity, transform, filter; }
 .debit-card__top { display: flex; justify-content: space-between; align-items: start; gap: var(--space-2); font-size: var(--text-sm); font-weight: 800; }
 .debit-card__chip { width: 2.1rem; height: 1.5rem; border: 1px solid #9ccde5; border-radius: .35rem; background: linear-gradient(135deg, #c3e6f2, #6fa7c9); }
 .debit-card__bottom { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: var(--space-2); font-size: var(--text-xs); letter-spacing: .08em; }
@@ -80,6 +81,16 @@ p { margin-top: 0; }
 .digital-card__bottom small { color: #c0e7f5; font-size: 1rem; font-weight: 750; letter-spacing: .06em; }
 .digital-card .badge { border-color: #5fdfb0; background: rgba(1,36,40,.65); font-size: 1rem; }
 .section-heading .solution-summary { margin: var(--space-6) 0 0; padding-left: var(--space-5); border-left: 3px solid var(--color-cyan); color: var(--color-white); font-size: var(--text-lg); font-weight: 700; }
+@keyframes alert-color-cycle {
+  0%, 30%, 100% { color: var(--color-white); text-shadow: none; }
+  42%, 68% { color: #ff4d5a; text-shadow: 0 0 1.2rem rgba(255,77,90,.34); }
+  82% { color: var(--color-white); text-shadow: none; }
+}
+@keyframes debit-card-visibility-cycle {
+  0%, 30%, 100% { opacity: 1; transform: rotate(-9deg) scale(1); filter: blur(0); }
+  42%, 68% { opacity: 0; transform: rotate(-9deg) scale(.92); filter: blur(.35rem); }
+  82% { opacity: 1; transform: rotate(-9deg) scale(1); filter: blur(0); }
+}
 @media (max-width: 60rem) {
   .site-header__inner { min-height: 4.75rem; flex-wrap: wrap; gap: var(--space-3); padding-block: var(--space-3); }
   .site-brand { max-width: calc(100% - 7.5rem); }
@@ -87,6 +98,10 @@ p { margin-top: 0; }
   .site-nav { order: 3; width: 100%; margin: 0; flex-direction: column; align-items: stretch; gap: 0; white-space: normal; }
   .js-enabled .site-nav:not(.is-open) { display: none; }
   .site-nav a { min-height: 2.8rem; display: flex; align-items: center; border-top: 1px solid var(--color-line); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero h1 .hero__alert { color: #ff4d5a; text-shadow: none; }
+  .debit-card { opacity: 1; transform: rotate(-9deg); filter: none; }
 }
 @media (max-width: 58rem) {
   .hero__grid, .video-layout { grid-template-columns: 1fr; }
