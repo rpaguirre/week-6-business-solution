@@ -1,14 +1,17 @@
 <!doctype html>
-<html lang="en" class="js-enabled">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Trace the business, design, and quality skills behind the SmartShield fraud protection prototype, from input through resulting change.">
   <title>Skills &amp; Testing Tools | SmartShield Fraud Protection</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2306162d'/%3E%3Cpath d='M8 16l5 5 11-12' fill='none' stroke='%2356d9e9' stroke-width='4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="evidence-tokens.css">
-  <link rel="stylesheet" href="evidence-components.css">
-  <link rel="stylesheet" href="evidence.css">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="evidence.css?v=min-16px">
+  <script src="home.js" defer></script>
+  <script src="skills-data.js?v=business-after" defer></script>
+  <script src="evidence.js?v=design-outline" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -36,37 +39,15 @@
     <section class="evidence-hero" aria-labelledby="page-title">
       <div class="container">
         <p class="eyebrow">Skills, MCPs, and testing</p>
-        <h1 id="page-title">The work behind <span>SmartShield</span></h1>
-        <p class="evidence-hero__lead">Three skills shaped the prototype: one sets the purchase decision, one organizes the experience, and one checks the result. Follow each from input to change.</p>
+        <h1 id="page-title">The Skills behind <span>SmartShield</span></h1>
+        <p class="evidence-hero__lead">Three skills that shaped the prototype: one sets the debit purchase decision, one organizes and refines the user experience, and one validates the result.</p>
       </div>
     </section>
 
     <section class="role-section" aria-labelledby="category-title">
       <div class="container">
-        <h2 id="category-title">Explore the three roles</h2>
-        <nav class="role-index" id="role-index" aria-label="Evidence roles">
-          <a class="role-index__link" href="#role-business">
-            <span class="role-index__icon">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="9" width="38" height="30" rx="5"></rect><path d="M5 19h38M13 29l6 5 13-12"></path></svg>
-            </span>
-            <span class="role-index__copy"><strong>Business solution</strong><small>Debit Card Fraud Demo Builder</small></span>
-            <span class="role-index__arrow">↓</span>
-          </a>
-          <a class="role-index__link" href="#role-design">
-            <span class="role-index__icon">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="5"></rect><path d="M6 17h36M17 17v25M24 26h11M24 32h8"></path></svg>
-            </span>
-            <span class="role-index__copy"><strong>UX and design</strong><small>Frontend Design Premium</small></span>
-            <span class="role-index__arrow">↓</span>
-          </a>
-          <a class="role-index__link" href="#role-testing">
-            <span class="role-index__icon">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 4 7 11v12c0 11 7 17 17 21 10-4 17-10 17-21V11L24 4Z"></path><path d="m16 24 6 6 11-13"></path></svg>
-            </span>
-            <span class="role-index__copy"><strong>Testing and quality</strong><small>Playwright</small></span>
-            <span class="role-index__arrow">↓</span>
-          </a>
-        </nav>
+        <h2 id="category-title">Explore the three skills</h2>
+        <nav class="role-index" id="role-index" aria-label="Skills on this page"></nav>
       </div>
     </section>
 
@@ -74,59 +55,11 @@
       <div class="container">
         <div class="section-heading">
           <p class="eyebrow">The evidence</p>
-          <h2 id="detail-title">From input to outcome</h2>
-          <p>Each record names the skill, shows what it received and did, and points to the result or source. All purchase examples use synthetic data.</p>
+          <h2 id="detail-title">The skills in practice</h2>
+          <p>Follow each skill from input through interaction to outcome, then review the evidence and decisions behind the result.</p>
         </div>
-        <div id="skill-groups">
-          <article class="skill-record skill-record--business" id="role-business">
-            <div class="skill-record__identity">
-              <p class="skill-record__role">Business solution skill</p>
-              <h3>Debit Card Fraud Demo Builder</h3>
-              <p>Builds an explainable, synthetic debit-card fraud demonstration that scores transactions, routes uncertain purchases to verification, and reports fraud and false-decline outcomes.</p>
-            </div>
-            <ol class="evidence-trail">
-              <li class="evidence-trail__step">
-                <h4>Input</h4>
-                <p>A synthetic CSV transaction with purchase amount, recent average, merchant and device status, location, velocity, travel notice, customer verification response, and an evaluation-only fraud label.</p>
-              </li>
-              <li class="evidence-trail__step">
-                <h4>Interaction</h4>
-                <p>The skill validates the row, creates explainable risk signals, and calculates a bounded 0–100 demo score. It assigns APPROVE (0–39), VERIFY (40–79), or DECLINE (80–100); VERIFY uses the customer’s YES or NO response to set the final action.</p>
-              </li>
-              <li class="evidence-trail__step">
-                <h4>Resulting change</h4>
-                <p>The demo shows the score, initial and final actions, reason codes, and a plain-English explanation, then rolls synthetic outcomes into fraud recall, false-decline rate, fraud dollars prevented, and legitimate dollars preserved.</p>
-              </li>
-            </ol>
-            <div class="evidence-source">
-              <span class="evidence-source__label">Source trail</span>
-              <p>The demo builder defines the scoring rules, verification flow, metrics, test cases, and guardrails. It requires synthetic or de-identified data and explicitly limits the work to demonstrations and prototypes.</p>
-            </div>
-            <section class="evidence-screenshot">
-              <h4>Evidence</h4>
-              <div class="evidence-screenshot__frame evidence-screenshot__frame--empty">
-                <span class="evidence-screenshot__icon" aria-hidden="true">▣</span>
-                <strong>Demonstration output</strong>
-                <p>The skill produces a synthetic transaction simulator, customer-verification flow, dashboard metrics, scenario controls, and scoring checks without using real cardholder data.</p>
-              </div>
-            </section>
-          </article>
-
-          <article class="skill-record skill-record--design" id="role-design">
-            <div class="skill-record__identity"><p class="skill-record__role">UX and design skill</p><h3>Frontend Design Premium</h3><p>Makes the evidence readable and easy to inspect across desktop, narrow windows, and mobile.</p></div>
-            <ol class="evidence-trail"><li class="evidence-trail__step"><h4>Input</h4><p>The Evidence page used a five-column table for three distinct roles. Its cells became a long, repetitive stack on small screens.</p></li><li class="evidence-trail__step"><h4>Interaction</h4><p>The design review called for a quick role index and a consistent input → interaction → resulting change sequence for each skill, with source details kept alongside the claim.</p></li><li class="evidence-trail__step"><h4>Resulting change</h4><p>This page now uses three evidence records. The sequence stays visible as columns on wide screens and reflows into one readable column on phones.</p></li></ol>
-            <div class="evidence-source"><span class="evidence-source__label">Source trail</span><p>The revised Evidence page is the design output. It retains the Northstar colors and navigation while replacing the table layout.</p></div>
-            <section class="evidence-screenshot"><h4>Evidence</h4><div class="evidence-screenshot__comparison"><div class="evidence-screenshot__panel"><h5>Before</h5><div class="evidence-screenshot__frame evidence-screenshot__frame--comparison"><a class="evidence-screenshot__image-link" href="https://northstar-bank-smartshield-fraud-protection.rolandopaguirre.chatgpt.site/skills-page-before.png" target="_blank" rel="noopener" aria-label="View full before screenshot"><img class="evidence-screenshot__image" src="https://northstar-bank-smartshield-fraud-protection.rolandopaguirre.chatgpt.site/skills-page-before.png" alt="Original mobile Evidence page with table text wrapping into narrow vertical columns." loading="lazy" decoding="async"></a></div><p class="evidence-screenshot__caption">Original mobile layout, before the Evidence page redesign.</p></div><div class="evidence-screenshot__panel"><h5>After</h5><div class="evidence-screenshot__frame evidence-screenshot__frame--empty evidence-screenshot__frame--comparison"><span class="evidence-screenshot__icon" aria-hidden="true">▣</span><strong>Screenshot to be added</strong><p>Add a screenshot of the updated working Evidence page.</p></div></div></div></section>
-          </article>
-
-          <article class="skill-record skill-record--testing" id="role-testing">
-            <div class="skill-record__identity"><p class="skill-record__role">Testing and quality skill</p><h3>Playwright</h3><p>Automates a real browser to test page behavior and layouts at different screen sizes.</p></div>
-            <ol class="evidence-trail"><li class="evidence-trail__step"><h4>Input</h4><p>The Evidence page at 1280, 800, 390, and 320 pixel widths, plus role links and the mobile menu.</p></li><li class="evidence-trail__step"><h4>Interaction</h4><p>Playwright opened the local page, checked for horizontal overflow and page errors, followed a role link, and opened the mobile menu.</p></li><li class="evidence-trail__step"><h4>Resulting change</h4><p>All three records rendered, none of the checked widths overflowed, the role link and menu worked, and the browser reported no page errors.</p></li></ol>
-            <div class="evidence-source"><span class="evidence-source__label">Source trail</span><p>These are local browser checks of the Evidence page. They do not measure the accuracy of a production fraud system.</p><a class="evidence-link" href="https://playwright.dev/docs/intro">About Playwright</a></div>
-            <section class="evidence-screenshot"><h4>Evidence</h4><div class="evidence-screenshot__frame evidence-screenshot__frame--empty"><span class="evidence-screenshot__icon" aria-hidden="true">▣</span><strong>Screenshot to be added</strong><p>Show the Playwright browser check or its results.</p></div></section>
-          </article>
-        </div>
-        <noscript><p class="panel evidence-noscript">JavaScript is only required for the mobile navigation menu; all evidence records remain available.</p></noscript>
+        <div id="skill-groups"></div>
+        <noscript><p class="panel evidence-noscript">Enable JavaScript to view the skill entries.</p></noscript>
       </div>
     </section>
   </main>
@@ -137,22 +70,12 @@
         <div class="site-footer__brand">Northstar Bank · SmartShield Fraud Protection<p>Protection that keeps you moving.</p></div>
         <nav class="footer-nav" aria-label="Page sections">
           <a href="index.html">Home</a>
-          <a href="#category-title">Three roles</a>
+          <a href="#category-title">Three skills</a>
           <a href="#detail-title">Evidence</a>
         </nav>
       </div>
       <p class="site-footer__disclaimer">Northstar Bank and SmartShield Fraud Protection are fictional concepts created for entertainment purposes only. This website is not intended to market, advertise, or offer any real financial product or service. No accounts, cards, or services are available, and all names, features, and scenarios shown are illustrative.</p>
     </div>
   </footer>
-
-  <script>
-    const toggle = document.getElementById('menu-toggle');
-    const navigation = document.getElementById('site-nav');
-
-    toggle.addEventListener('click', () => {
-      const isOpen = navigation.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(isOpen));
-    });
-  </script>
 </body>
 </html>
