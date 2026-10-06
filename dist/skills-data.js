@@ -23,9 +23,8 @@ window.smartShieldSkills = {
           alt: 'Before screenshot of the transaction simulator with synthetic CSV scenarios and a Run scenario button.'
         },
         after: {
-          src: '',
-          alt: '',
-          placeholder: 'Add a screenshot of the updated working demo.'
+          src: 'business-skill-after.png',
+          alt: 'After screenshot of the transaction simulator with a synthetic scenario selector and Next transaction button.'
         },
         summary: {
           title: 'Demonstration output',
