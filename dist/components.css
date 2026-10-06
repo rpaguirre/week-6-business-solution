@@ -43,7 +43,9 @@ img, svg, video { max-width: 100%; }
 .site-header { position: relative; z-index: 20; border-bottom: 1px solid #244a6a; background: rgba(6, 22, 45, 0.98); }
 .site-header__inner { min-height: 6rem; display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); }
 .site-brand { display: flex; flex: none; flex-direction: column; gap: .16rem; max-width: 17rem; color: var(--color-white); line-height: 1.12; text-decoration: none; }
-.site-brand__bank { color: var(--color-cyan); font-size: .78rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.site-brand__identity { display: flex; align-items: center; gap: .48rem; min-height: 2rem; }
+.site-brand__mark { width: 2.125rem; height: 2rem; flex: none; object-fit: contain; }
+.site-brand__bank { color: #56dff2; font-size: .78rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .site-brand__product { font-size: 1.05rem; font-weight: 850; letter-spacing: -.025em; }
 .site-brand__tagline { color: var(--color-muted); font-size: .8rem; font-weight: 600; }
 .site-nav { display: flex; align-items: center; gap: clamp(.65rem, 1.2vw, 1.3rem); margin-left: auto; white-space: nowrap; }
