@@ -23,26 +23,26 @@
     return node;
   }
 
-  function appendText(parent, value) {
-    parent.append(element('p', '', value || 'Evidence has not been supplied yet.'));
-  }
-
-  function addEvidence(parent, evidence) {
-    if (!evidence) return;
-    const note = element('div', 'evidence-source');
-    note.append(element('span', 'evidence-source__label', 'Source trail'));
-    if (evidence.description) appendText(note, evidence.description);
-    if (evidence.linkUrl) {
-      try {
-        const url = new URL(evidence.linkUrl, document.baseURI);
-        if (['http:', 'https:'].includes(url.protocol)) {
-          const link = element('a', 'evidence-link', evidence.linkText || 'View source');
-          link.href = url.href;
-          note.append(link);
-        }
-      } catch { /* Keep the written source trail when a link is malformed. */ }
+  function appendText(parent, value, link) {
+    const paragraph = element('p');
+    const content = value || 'Evidence has not been supplied yet.';
+    const marker = link?.text;
+    const position = marker ? content.indexOf(marker) : -1;
+    if (position >= 0 && /^https:\/\//.test(link.href)) {
+      const anchor = element('a', 'evidence-trail__link');
+      anchor.href = link.href;
+      anchor.target = '_blank';
+      anchor.rel = 'noopener noreferrer';
+      anchor.append(element('strong', '', marker));
+      paragraph.append(
+        document.createTextNode(content.slice(0, position)),
+        anchor,
+        document.createTextNode(content.slice(position + marker.length))
+      );
+    } else {
+      paragraph.textContent = content;
     }
-    parent.append(note);
+    parent.append(paragraph);
   }
 
   function screenshotFrame(screenshot = {}, label = '') {
@@ -54,7 +54,7 @@
       icon.setAttribute('aria-hidden', 'true');
       frame.replaceChildren(
         icon,
-        element('strong', '', 'Screenshot to be added'),
+        element('strong', '', screenshot.title || 'Screenshot to be added'),
         element('p', '', screenshot.placeholder || 'Add a screenshot that shows this skill in use.')
       );
       caption?.remove();
@@ -71,17 +71,13 @@
       image.loading = 'lazy';
       image.decoding = 'async';
       image.addEventListener('error', placeholder, { once: true });
-      if (label) {
-        const link = element('a', 'evidence-screenshot__image-link');
-        link.href = source.href;
-        link.target = '_blank';
-        link.rel = 'noopener';
-        link.setAttribute('aria-label', `View full ${label.toLowerCase()} screenshot`);
-        link.append(image);
-        frame.append(link);
-      } else {
-        frame.append(image);
-      }
+      const link = element('a', 'evidence-screenshot__image-link');
+      link.href = source.href;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.setAttribute('aria-label', label ? `View full ${label.toLowerCase()} screenshot` : 'View full evidence screenshot');
+      link.append(image);
+      frame.append(link);
     } else {
       placeholder();
     }
@@ -103,6 +99,12 @@
         comparison.append(panel);
       });
       section.append(comparison);
+      if (screenshot.summary) {
+        const { frame, caption } = screenshotFrame(screenshot.summary);
+        frame.classList.add('evidence-screenshot__frame--summary');
+        section.append(frame);
+        if (caption) section.append(caption);
+      }
     } else {
       const { frame, caption } = screenshotFrame(screenshot);
       section.append(frame);
@@ -119,7 +121,7 @@
     indexLink.firstChild.innerHTML = icons[category.type] || '';
     const indexCopy = element('span', 'role-index__copy');
     indexCopy.append(element('strong', '', category.shortTitle), element('small', '', category.indexDescription));
-    indexLink.append(indexCopy, element('span', 'role-index__arrow', '↓'));
+    indexLink.append(indexCopy);
     index.append(indexLink);
 
     const entries = data.entries.filter((entry) => entry.type === category.type);
@@ -130,7 +132,13 @@
       const identity = element('div', 'skill-record__identity');
       identity.append(element('p', 'skill-record__role', category.title));
       identity.append(element('h3', '', entry.name || 'Tool name pending'));
-      appendText(identity, entry.purpose);
+      identity.append(element('p', 'skill-record__description', entry.purpose || 'Evidence has not been supplied yet.'));
+      if (Array.isArray(entry.goals) && entry.goals.length) {
+        const goals = element('ol', 'skill-record__goals');
+        entry.goals.forEach((goal) => goals.append(element('li', '', goal)));
+        identity.append(goals);
+        if (entry.scopeNote) identity.append(element('p', 'skill-record__description', entry.scopeNote));
+      }
       article.append(identity);
 
       const trail = element('ol', 'evidence-trail');
@@ -141,12 +149,26 @@
       ].forEach(([label, value]) => {
         const step = element('li', 'evidence-trail__step');
         step.append(element('h4', '', label));
-        appendText(step, value);
+        appendText(step, value, label === 'Input' ? entry.inputLink : null);
+        if (label === 'Input' && entry.inputOutline) {
+          const outline = element('ol', 'evidence-input-outline');
+          const item = element('li', '', entry.inputOutline.heading);
+          const points = element('ul');
+          entry.inputOutline.items.forEach((point) => points.append(element('li', '', point)));
+          item.append(points);
+          outline.append(item);
+          step.append(outline);
+        }
         trail.append(step);
       });
       article.append(trail);
-      addEvidence(article, entry.evidence);
       addScreenshot(article, entry.screenshot);
+      if (entry.acceptedChanges) {
+        const review = element('section', 'skill-record__review');
+        review.append(element('h4', '', 'Changes accepted or rejected'));
+        appendText(review, entry.acceptedChanges);
+        article.append(review);
+      }
       groups.append(article);
     });
   });
