@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="components.css">
   <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="nav-motion-preview.css">
   <script src="home.js" defer></script>
 </head>
 <body>
@@ -23,12 +24,27 @@
       <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
         <span aria-hidden="true">☰</span> Menu
       </button>
-      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-        <a href="index.html" aria-current="page">Home/Problem</a>
-        <a href="solution.html">Working solution</a>
-        <a href="marketing.html">Marketing</a>
-        <a href="evidence.html">Skills &amp; testing</a>
-        <a href="guide.html">Impact &amp; guide</a>
+      <nav class="site-nav site-nav--motion" id="site-nav" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">
+          <span class="nav-motion nav-motion--shield" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 4 32 9v9c0 8-5 13-12 17C13 31 8 26 8 18V9l12-5Z"/><path class="nav-motion__signal" d="m14 19 4 4 8-10"/><circle class="nav-motion__ring" cx="20" cy="19" r="12"/></svg></span>
+          <span>Home/Problem</span>
+        </a>
+        <a href="solution.html">
+          <span class="nav-motion nav-motion--flow" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8"><path class="nav-motion__route" d="M7 29c7-20 18 9 27-18"/><circle cx="7" cy="29" r="3"/><circle cx="21" cy="21" r="3"/><circle cx="34" cy="11" r="3"/><circle class="nav-motion__traveler" cx="7" cy="29" r="2"/></svg></span>
+          <span>Working Solution</span>
+        </a>
+        <a href="marketing.html">
+          <span class="nav-motion nav-motion--signal" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17h7l12-6v18l-12-6H7v-6Zm7 6 3 8h-5l-2-8"/><path class="nav-motion__wave nav-motion__wave--one" d="M29 16q6 4 0 8"/><path class="nav-motion__wave nav-motion__wave--two" d="M33 12q10 8 0 16"/></svg></span>
+          <span>Marketing</span>
+        </a>
+        <a href="evidence.html">
+          <span class="nav-motion nav-motion--scan" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m15 10-8 10 8 10M25 10l8 10-8 10M23 7l-6 26"/><path class="nav-motion__scanline" d="M6 13h28"/></svg></span>
+          <span>Skills &amp; Testing</span>
+        </a>
+        <a href="guide.html">
+          <span class="nav-motion nav-motion--orbit" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="20" cy="20" r="13"/><path class="nav-motion__needle" d="m20 20 5-10 2 12-7-2Z"/><circle class="nav-motion__dot" cx="20" cy="5" r="2"/></svg></span>
+          <span>Impact &amp; Guide</span>
+        </a>
       </nav>
     </div>
   </header>
